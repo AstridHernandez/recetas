@@ -1,0 +1,101 @@
+<div class="row" style="margin-top:7px">
+  <div ng-show="!RECIPES" class="col 12">
+    <div class="preloader-wrapper active">
+      <div class="spinner-layer spinner-green-only">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col s12">
+    <div id="columnas">
+      <div class="carta"  ng-repeat="receta in RECIPES">
+        <a ui-sref="receta({id: receta.id})">
+          <div class="card hoverable">
+            <div class="card-image">
+              <img src='images/tastyhouselarge.gif' lazy-img="{{receta.imagen.url}}">
+              <span class="card-title">{{receta.nombre}}</span>
+            </div>
+
+            <div class="card-content">
+              <p>{{receta.descripcion}}</p>
+              <div class="inicio-categorias">
+                <div class="chip" ng-repeat="categoria in receta.categorias">
+      				    {{categoria.texto}}
+      				  </div>
+              </div>
+
+              <div class="inicio-tiempo">
+                <div class="chip " ng-repeat="tiempo in receta.time">
+      						<i class="fa fa-clock-o coccion-tiempo" aria-hidden="true"></i>
+      				    {{tiempo.hora}} hs {{tiempo.minuto}} min
+      				  </div>
+              </div>
+
+              <div>
+                <div class="chip" ng-repeat="porcion in receta.porciones">
+      						<i class="fa fa-users porciones-cantidad" aria-hidden="true"></i>
+      				    {{porcion.cantidad}}
+      				  </div>
+              </div>
+
+              <div class="call-data-contenedor">
+                <div class="favorite-contenedor">
+                  <i class="material-icons">favorite</i>
+                  <span>46</span>
+                </div>
+                <div class="basket-contenedor">
+                  <i class="material-icons">shopping_basket</i>
+                  <span>95</span>
+                </div>
+              </div>
+            </div>
+            <!-- USUARIO -->
+            <ul class="collection" style="border-right: none; border-left: none; border-bottom: none; margin:0">
+              <li class="collection-item avatar">
+                <img ng-show="!receta.usuario.avatar" src='images/avatar.jpg' class="circle">
+                <img ng-show="receta.usuario.avatar" src="images/avatar.jpg" lazy-img="{{receta.usuario.avatar.url}}" alt="" class="circle">
+                <span class="title">{{receta.usuario.nombre}} {{receta.usuario.apellido}}</span>
+                <p>{{receta.date | date: "longDate"}}</p>
+              </li>
+            </ul>
+            <!-- <div class="call-to-action">
+              <a class="waves-effect waves-light btn white favorito">
+                <i class="material-icons left grey-text">favorite_border</i>
+              </a>
+              <a class="waves-effect waves-light btn bg-principal right guardar">
+                <i class="material-icons left">shopping_basket</i>
+                guardar
+              </a>
+            </div> -->
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BUSCAR BOTON -->
+
+<div class="fixed-action-btn">
+  <a class="btn-floating btn-large waves-effect waves-light bg-principal" ng-click="abrirBuscador()">
+    <i class="large material-icons">search</i>
+  </a>
+</div>
+
+<div class="buscadorContenedor">
+  <i class="material-icons">search</i>
+  <form>
+    <input id="buscador" type="text">
+  </form>
+  <ul>
+    <li>
+      <a ng-click="cerrarBuscador()">Cerrar</a>
+    </li>
+  </ul>
+</div>

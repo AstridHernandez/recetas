@@ -1,0 +1,25 @@
+
+.loginSociales{
+  margin-top: 15px;
+}
+
+.loginSociales a{
+  width: 49%;
+}
+
+.facebook{
+  background-color: #3b5998;
+}
+
+.twitter{
+  background-color: #00aced;
+}
+
+.card-action{
+  display: flex;
+  justify-content: space-around;
+}
+
+.card-action a{
+  margin-right: 0 !important;
+}
