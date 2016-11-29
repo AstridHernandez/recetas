@@ -240,7 +240,7 @@
 	        	<h5>No tienes ingredientes creados.</h5>
 	        </div>
 	        <div ng-show="RECETA.ingredientes">
-	        	<h4>Listado de los ingredientesr.</h4>
+	        	<h4>Listado de los ingredientes.</h4>
 	        	<div ng-repeat="ingrediente in RECETA.ingredientes">
 	        		<h5>Ingrediente {{$index + 1}}</h5>
 							<ul class="collection">
@@ -369,7 +369,7 @@
 					guardar porciones
 				</button>
 				<div ng-show="!RECETA.porciones">
-					<h5>No tiene tiempo de cocción.</h5>
+					<h5>No tiene cantidad de porciones.</h5>
 				</div>
 				<div ng-show="RECETA.porciones">
 					<h4>Tiempo de cocción.</h4>
