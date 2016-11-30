@@ -1,29 +1,12 @@
 'use strict';
 
 angular.module('recetasApp')
-  .factory('Data', function (Fire, firebase, $rootScope, Authentication, $firebaseObject) {
+  .factory('Data', function (Fire, firebase, $rootScope, Authentication, $firebaseObject , $timeout) {
 
     return{
       inicializarRecetas: function(){
-      //   var cargarRecetas = Fire.firebaseDb().ref('recetas');
-      //   var recetasUsuarios = $firebaseObject(cargarRecetas);
-      //   recetasUsuarios.$loaded(function(data){
-      //     var allRecipe = [];
-      //     for (var k in data){
-      //       if (data.hasOwnProperty(k)){
-      //         var obj  = data[k];
-      //         for (var i in obj){
-      //           if (obj.hasOwnProperty(i)){
-      //             if(obj[i].status === 2){
-      //               allRecipe.push(obj[i]);
-      //             }
-      //           }
-      //         }
-      //       }
-      //     }
-      //     $rootScope.RECIPES = allRecipe;
-      //   });
         var cargarRecetas = Fire.firebaseDb().ref('recetas').on('value',function(snapshot){
+
           var recetasUsuarios = snapshot.val();
 
           var allRecipe = [];
@@ -39,7 +22,10 @@ angular.module('recetasApp')
               }
             }
           }
-          $rootScope.RECIPES = allRecipe;
+
+          $timeout(function(){
+            $rootScope.RECIPES = allRecipe;
+          });
         });
       },
 

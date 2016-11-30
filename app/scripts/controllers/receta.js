@@ -12,7 +12,6 @@ angular.module('recetasApp')
 
     angular.forEach($rootScope.RECIPES, function(value) {
       if(value.id === $stateParams.id){
-        console.log(value);
         $scope.receta = value;
       }
     });

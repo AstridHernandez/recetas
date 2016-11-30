@@ -37,6 +37,7 @@ angular.module('recetasApp')
       if(recetaId !== undefined){
         var refReceta = Fire.firebaseDb().ref('recetas/' + $rootScope.USUARIO.id).child(recetaId);
         var receta = $firebaseObject(refReceta);
+
         $rootScope.RECETA = receta;
       }
     };
